@@ -1,0 +1,11 @@
+.env
+Makefile
+.idea
+.data
+.bin
+.DS_Store
+
+cover.out
+
+# Visual Studio Settings
+.vscode
