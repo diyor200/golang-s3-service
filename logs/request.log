@@ -82,3 +82,6 @@
 {"time":"2023-09-29T11:13:09.452047076Z","method":"POST","uri":"/auth/sign-up","status":"201","error":""
 {"time":"2023-09-29T11:13:14.273401818Z","method":"POST","uri":"/auth/sign-in","status":"200","error":""
 {"time":"2023-09-29T11:13:35.151494859Z","method":"GET","uri":"/health","status":"200","error":""
+{"time":"2023-09-30T04:16:46.957279961Z","method":"POST","uri":"/auth/sign-up","status":"201","error":""
+{"time":"2023-09-30T04:21:25.874068333Z","method":"POST","uri":"/auth/sign-in","status":"200","error":""
+{"time":"2023-09-30T04:29:35.229215901Z","method":"POST","uri":"/api/v1/file","status":"200","error":""
