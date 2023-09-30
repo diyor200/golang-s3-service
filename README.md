@@ -20,3 +20,5 @@ To send your image you need to enter jwt token. After that You can send image. I
 After successfully sent file system return link of this file in the cloud:</h4>
 <img src="images/upload1.png">
 <img src="images/upload2.png">.
+<br>
+<a href="https://www.buymeacoffee.com/diyorbekabdulaxatov" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
