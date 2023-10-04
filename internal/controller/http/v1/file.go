@@ -26,7 +26,8 @@ func newFileRoutes(g *echo.Group, files service.Files) {
 	var r = &fileRoutes{
 		fileService: files,
 	}
-	g.POST("/file", r.upload)
+	g.POST("/upload/file", r.upload)
+	//g.GET("/get/files", r.getFiles)
 }
 
 func (r *fileRoutes) upload(c echo.Context) error {
