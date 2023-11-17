@@ -2,17 +2,17 @@ package v1
 
 import (
 	"errors"
-	"github.com/labstack/echo/v4"
-	log "github.com/sirupsen/logrus"
 	"golang-diplom-work/internal/service"
 	"net/http"
+
+	"github.com/labstack/echo/v4"
+	log "github.com/sirupsen/logrus"
 )
 
 type authRoutes struct {
 	authService service.Auth
 }
 
-// func newAuthRoutes(g *echo.Group, authService service.Auth) {
 func newAuthRoutes(g *echo.Group, authService service.Auth) {
 	r := &authRoutes{
 		authService: authService,

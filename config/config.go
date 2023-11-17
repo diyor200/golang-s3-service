@@ -2,49 +2,48 @@ package config
 
 import (
 	"fmt"
-	"github.com/joho/godotenv"
-	log "github.com/sirupsen/logrus"
 	"os"
 	"time"
+
+	"github.com/joho/godotenv"
+	log "github.com/sirupsen/logrus"
 )
 
 type (
 	Config struct {
-		App    // `yaml:"app"`
-		HTTP   //`yaml:"http"`
-		Log    //`yaml:"log"`
-		PG     //`yaml:"postgres"`
-		JWT    //`yaml:"jwt"`
-		Hasher //`yaml:"hasher"`
+		App
+		HTTP
+		Log
+		PG
+		JWT
+		Hasher
 		S3
-		//WebAPI `yaml:"webapi"`
 	}
 
 	App struct {
-		Name    string //`env-required:"true" yaml:"name" env:"APP_NAME"`
-		Version string //`env-required:"true" yaml:"version" env:"APP_VERSION"`
+		Name    string
+		Version string
 	}
 
 	HTTP struct {
-		Port string //`env-required:"true" yaml:"port" env:"HTTP_PORT"`
+		Port string
 	}
 
 	Log struct {
-		Level string //`env-required:"true" yaml:"level" env:"LOG_LEVEL"`
+		Level string
 	}
-
 	PG struct {
-		MaxPoolSize int    // `env-required:"true" yaml:"max_pool_size" env:"PG_MAX_POOL_SIZE"`
-		URL         string //`env-required:"false" env:"PG_URL"`
+		MaxPoolSize int
+		URL         string
 	}
 
 	JWT struct {
-		SignKey  string        //  `env-required:"true" env:"JWT_SIGN_KEY"`
-		TokenTTL time.Duration //`env-required:"true" yaml:"token_ttl" env:"JWT_TOKEN_TTL"`
+		SignKey  string
+		TokenTTL time.Duration
 	}
 
 	Hasher struct {
-		Salt string //`env-required:"true" env:"HASHER_SALT"`
+		Salt string
 	}
 
 	S3 struct {
@@ -61,19 +60,19 @@ func NewConfig() (*Config, error) {
 	cfg := &Config{}
 	cfg.MaxPoolSize = 20
 	cfg.PG.URL = fmt.Sprintf("user=%s host=%s password=%s port=%s dbname=%s sslmode=disable", os.Getenv("DB_USER"),
-		os.Getenv("DB_HOST"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_PORT"), os.Getenv("DB_NAME")) // os.Getenv("PG_URL") //"postgres://postgres:2001@localhost:5432/postgres?sslmode=disable"
+		os.Getenv("DB_HOST"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_PORT"), os.Getenv("DB_NAME"))
 	cfg.App.Name = "diplom-work"
 	cfg.App.Version = "1.0.0"
-	cfg.HTTP.Port = os.Getenv("HTTP_PORT") // "8080"
+	cfg.HTTP.Port = os.Getenv("HTTP_PORT")
 	cfg.Log.Level = "debug"
-	cfg.JWT.SignKey = os.Getenv("JWT_SIGN_KEY") // "Diyorbek2001"
+	cfg.JWT.SignKey = os.Getenv("JWT_SIGN_KEY")
 	cfg.JWT.TokenTTL = time.Minute * 120
 
-	cfg.Hasher.Salt = os.Getenv("HASHER_SALT")                     // "Tatu65019$"
-	cfg.S3.AwsRegion = os.Getenv("AWS_REGION")                     // "us-east-1"
-	cfg.S3.AwsAccessKeyId = os.Getenv("AWS_ACCESS_KEY_ID")         //"AKIAZXWUWEZM54NWZVX2"
-	cfg.S3.AwsSecretAccessKey = os.Getenv("AWS_SECRET_ACCESS_KEY") //"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"
-	cfg.S3.AwsBucket = os.Getenv("AWS_BUCKET")                     //"test-go-diyorbek"
+	cfg.Hasher.Salt = os.Getenv("HASHER_SALT")
+	cfg.S3.AwsRegion = os.Getenv("AWS_REGION")
+	cfg.S3.AwsAccessKeyId = os.Getenv("AWS_ACCESS_KEY_ID")
+	cfg.S3.AwsSecretAccessKey = os.Getenv("AWS_SECRET_ACCESS_KEY")
+	cfg.S3.AwsBucket = os.Getenv("AWS_BUCKET")
 	os.Clearenv()
 
 	return cfg, nil
