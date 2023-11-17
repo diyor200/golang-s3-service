@@ -2,17 +2,11 @@ package app
 
 import (
 	"fmt"
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/credentials"
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/s3/s3manager"
-	"github.com/labstack/echo/v4"
-	log "github.com/sirupsen/logrus"
 	"golang-diplom-work/config"
 	v1 "golang-diplom-work/internal/controller/http/v1"
 	"golang-diplom-work/internal/repo"
 	"golang-diplom-work/internal/service"
-	"golang-diplom-work/pkg/custom-validator"
+	custom_validator "golang-diplom-work/pkg/custom-validator"
 	"golang-diplom-work/pkg/hasher"
 	"golang-diplom-work/pkg/httpserver"
 	"golang-diplom-work/pkg/postgres"
@@ -20,6 +14,13 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/credentials"
+	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/s3/s3manager"
+	"github.com/labstack/echo/v4"
+	log "github.com/sirupsen/logrus"
 )
 
 func Run() {
@@ -35,7 +36,6 @@ func Run() {
 
 	// Repositories
 	log.Info("Initializing postgres...")
-	//url := fmt.Sprintf("user=postgres password=2001 host=localhost port=5432 dbname=postgres sslmode=disable pool_max_conns=10")
 	pg, err := postgres.New(cfg.PG.URL, postgres.MaxPoolSize(cfg.PG.MaxPoolSize))
 	if err != nil {
 		log.Fatal(fmt.Errorf("app - Run - pgdb.NewServices: %w", err))

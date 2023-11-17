@@ -1,12 +1,13 @@
 package v1
 
 import (
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 	"golang-diplom-work/internal/service"
 	"log"
 	"os"
 	"path/filepath"
+
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func NewRouter(handler *echo.Echo, services *service.Services) {
@@ -17,11 +18,6 @@ func NewRouter(handler *echo.Echo, services *service.Services) {
 	handler.Use(middleware.Recover())
 
 	handler.GET("/health", func(c echo.Context) error { return c.NoContent(200) })
-	//r := &authRoutes{
-	//	authService: services.Auth,
-	//}
-	//handler.POST("/sign-up", r.signUp)
-	//handler.POST("/sign-in", r.signIn)
 	auth := handler.Group("/auth")
 	{
 		newAuthRoutes(auth, services.Auth)
