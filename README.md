@@ -4,7 +4,7 @@
 2. Run <code>docker compose up</code>
 <br>
 <h3>Endpoints:</h3>
-<h4>1. <code>localhost:8080/auth/sign-up</code> send request it with your json data like this</h4>
+<h4>1. <code>localhost:8080/auth/sign-up</code> send request with your json data like this</h4>
 <br>
 <code>{ "username": "example_user1", "password":"examplePasword1@"}</code> 
 After successfully auth returns <code>id</code> of the user.
